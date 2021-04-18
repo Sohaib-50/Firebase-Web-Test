@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyBfMtsyBwnJYR9DhXi1YzrAKwlFToxsnCg",
+            authDomain: "fir-test-7b227.firebaseapp.com",
+            projectId: "fir-test-7b227",
+            storageBucket: "fir-test-7b227.appspot.com",
+            messagingSenderId: "178901212563",
+            appId: "1:178901212563:web:550f14d238574a85469c66",
+            measurementId: "G-XF6MNFQ9KX"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+    
+</head>
+<body>
+    SUCCESSSSS
+    <p id="userinfo"></p>
+    <button id="signout">Sign Out</button>
+    <p id="signoutstatus"></p>
+
+    <script>
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user)
+            {
+                document.querySelector("#userinfo").innerHTML = "Signed in as: " + user.displayName + " - Email: "+ user.email;
+            }
+            else{
+                document.querySelector("#userinfo").innerHTML = "Not SIgned In"
+            }
+        })
+
+        document.querySelector("#signout").addEventListener("click", function() {
+            var user = firebase.auth().currentUser;
+            if (user)
+            {
+                firebase.auth().signOut().then(() => {
+                    // Sign-out successful.
+                    document.querySelector("#signoutstatus").innerHTML = "Signout Success"
+                }).catch((error) => {
+                    // An error happened.
+                    document.querySelector("#signoutstatus").innerHTML = "Signout Failed" + error
+                });
+            }
+        })
+    </script>
+</body>
+</html>
