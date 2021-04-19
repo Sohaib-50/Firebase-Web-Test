@@ -52,7 +52,7 @@
           alert("logged in");
           document.querySelector(h2).innerHTML = "Signed in as " + user.displayName + ". You will be redirected in 3 seconds..."
           sleep(3000).then(() => {
-            window.location.replace("success.html");
+            window.location = "success.html";
           });
         }
         else

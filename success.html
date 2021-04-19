@@ -51,7 +51,7 @@
                 document.querySelector("#userinfo").innerHTML = "Not logged In"
                 document.querySelector(h2).innerHTML = "Logged out. You will be redirected in 3 seconds..."
                 sleep(3000).then(() => {
-                    window.location.replace("index.html");
+                    window.location = "index.html";
                 });
             }
         })
