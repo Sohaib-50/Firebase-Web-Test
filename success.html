@@ -30,22 +30,29 @@
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
     </script>
+
+
+    <link rel="stylesheet" href="styles.css">
     
 </head>
 <body>
-    SUCCESSSSS
-    <p id="userinfo"></p>
-    <button id="signout">Sign Out</button>
+    <h1 align="center">Logged in successfully!</h1>
+    <p id="userinfo" style="font-size: large;"></p>
+    <button id="signout" align="center">Sign Out</button>
     <p id="signoutstatus"></p>
 
     <script>
         firebase.auth().onAuthStateChanged(function(user) {
             if (user)
             {
-                document.querySelector("#userinfo").innerHTML = "Signed in as: " + user.displayName + " - Email: "+ user.email;
+                document.querySelector("#userinfo").innerHTML = "Logged in as: " + user.displayName + " - Email: "+ user.email;
             }
             else{
-                document.querySelector("#userinfo").innerHTML = "Not SIgned In"
+                document.querySelector("#userinfo").innerHTML = "Not logged In"
+                document.querySelector(h2).innerHTML = "Logged out. You will be redirected in 3 seconds..."
+                sleep(3000).then(() => {
+                    window.location.replace("index.html");
+                });
             }
         })
 
@@ -55,7 +62,7 @@
             {
                 firebase.auth().signOut().then(() => {
                     // Sign-out successful.
-                    document.querySelector("#signoutstatus").innerHTML = "Signout Success"
+                    window.location = "http://127.0.0.1:5500/Firebase-Web-Test/";
                 }).catch((error) => {
                     // An error happened.
                     document.querySelector("#signoutstatus").innerHTML = "Signout Failed" + error

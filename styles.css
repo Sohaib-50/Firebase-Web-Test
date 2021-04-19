@@ -1,0 +1,26 @@
+body
+{
+    background-color: hsl(200, 10%, 20%);
+    color: whitesmoke
+}
+
+form
+{
+    color: whitesmoke;
+    background-color: hsla(198, 10%, 20%, 0.226);
+}
+
+#firebaseui-auth-container
+{
+    background-color: hsla(198, 10%, 20%, 0.226);
+}
+
+.mdl-button--raised.mdl-button--colored
+{
+    background-color: hsl(200, 10%, 20%);
+}
+
+.mdl-button--raised.mdl-button--colored:hover
+{
+    background-color: hsl(209, 62%, 10%);
+}
